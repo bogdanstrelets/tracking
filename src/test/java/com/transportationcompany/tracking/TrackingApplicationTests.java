@@ -68,7 +68,7 @@ class TrackingApplicationTests {
 
 		URI uri = null;
 		try {
-			uri = new URI(String.format("http://localhost:%s/vehicle_location/add", port));
+			uri = new URI(String.format("http://localhost:%s/vehicle/location/add", port));
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}

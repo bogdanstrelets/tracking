@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.Timestamp;
 
 @RestController
-@RequestMapping("/vehicle_location")
+@RequestMapping("/vehicle/location")
 public class VehicleLocationController {
 
     private final VehicleService vehicleService;
