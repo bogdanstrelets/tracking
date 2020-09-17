@@ -21,7 +21,7 @@ public class VehicleLocation {
 
     private Long vehicleId;
 
-    @Column(columnDefinition = "geometry")
+    @Column(columnDefinition = "point")
     @JsonSerialize(using = GeometrySerializer.class)
     @JsonDeserialize(contentUsing = GeometryDeserializer.class)
     private Point location;
