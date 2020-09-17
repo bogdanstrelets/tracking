@@ -1,0 +1,63 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id "org.flywaydb.flyway" version "6.5.5"
+}
+
+@Grab('org.hibernate:hibernate:4.3.7.Final')
+group = 'com.transport-company'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'http://download.osgeo.org/webdav/geotools'
+	}
+	maven {
+		url 'http://www.hibernatespatial.org/repository'
+	}
+
+	maven {
+		url 'https://mvnrepository.com/artifact/com.vividsolutions/jts'
+	}
+
+	maven {
+		url 'https://mvnrepository.com/artifact/com.bedatadriven/jackson-datatype-jts'
+	}
+}
+
+dependencies {
+	implementation 'junit:junit:4.12'
+	runtime("org.springframework.boot:spring-boot-properties-migrator")
+	implementation 'org.hibernate:hibernate-spatial:5.4.20.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.vividsolutions:jts:1.13'
+	implementation 'org.locationtech.jts:jts-core:1.17.1'
+	implementation 'com.bedatadriven:jackson-datatype-jts:2.4'
+	runtimeOnly 'org.postgresql:postgresql'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+flyway {
+	url = 'jdbc:postgresql:tracking'
+	user = 'tracking'
+	password = 'tracking'
+}
